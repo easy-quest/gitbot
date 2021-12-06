@@ -10,8 +10,8 @@ from utils import make_message
 
 
 def get_url():
-    proxy_url = os.getenv('PROXY_URL')
-    base_url = proxy_url if proxy_url else TG_API_URL
+    # proxy_url = os.getenv('PROXY_URL')
+    base_url = TG_API_URL
     return urljoin(base_url, quote(f"bot{os.getenv('BOT_TOKEN')}/sendMessage"))
 
 
