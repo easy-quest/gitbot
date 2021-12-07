@@ -23,7 +23,8 @@ openssl rand -hex 32
 ```
 ##### Start your bot:
 ```shell script
-docker run --env-file .env -p 80:80 --name release-bot feofanov/github-release-bot
+#docker run --env-file .env -p 80:80 --name release-bot feofanov/github-release-bot
+docker run --env-file .env -p 80:80 --name release-bot easy-quest/gitbot
 ```
 ---
 ### Release webhook example:
@@ -35,7 +36,7 @@ unpublished, created, edited, deleted, or prereleased events.
 ##### Chat id
 First you should invite your bot in chat and then you can find your
  chat id in your bot api:  
-`https://api.telegram.org/bot<you_bot_token>>/getUpdates` 
+`https://api.telegram.org/bot5071233702:AAEju1zUpmvqHzA4zhsQ7XZMAk1R-BFC6zQ/getUpdates` 
 
 ##### Github settings
 * Open you github project settings and find **Webhook** section
@@ -97,6 +98,7 @@ SIGN="sha1="$(echo -n "$PAYLOAD" | openssl sha1 -hmac $KEY | sed -e 's/^.* //')
 ADDRESS="${HOST}:${PORT}/message/"
 curl -X POST $ADDRESS -H "X-Hub-Signature: $SIGN" -d "$PAYLOAD"
 ```
+
 
 # A Python Tor template on Gitpod
 
